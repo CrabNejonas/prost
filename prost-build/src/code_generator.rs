@@ -703,6 +703,11 @@ impl<'a> CodeGenerator<'a> {
         self.buf.push_str(
             "/// (if the ProtoBuf definition does not change) and safe for programmatic use.\n",
         );
+
+        self.push_indent();
+        self.buf
+            .push_str("#[must_use]");
+        
         self.push_indent();
         self.buf
             .push_str("pub fn as_str_name(&self) -> &'static str {\n");
@@ -734,6 +739,10 @@ impl<'a> CodeGenerator<'a> {
         self.buf
             .push_str("/// Creates an enum from field names used in the ProtoBuf definition.\n");
 
+        self.push_indent();
+        self.buf
+            .push_str("#[must_use]");
+        
         self.push_indent();
         self.buf
             .push_str("pub fn from_str_name(value: &str) -> ::core::option::Option<Self> {\n");
