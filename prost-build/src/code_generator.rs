@@ -84,6 +84,9 @@ impl<'a> CodeGenerator<'a> {
             code_gen.package
         );
 
+        code_gen.buf
+            .push_str("#![allow(clippy::doc_markdown)]\n");
+
         code_gen.path.push(4);
         for (idx, message) in file.message_type.into_iter().enumerate() {
             code_gen.path.push(idx as i32);
